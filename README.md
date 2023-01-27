@@ -147,7 +147,7 @@ sudo systemctl restart docker
 
  
 
-## Deploy a Pod Network
+### Deploy a Pod Network
 
  
 - Let's start by initializing the Kubernetes cluster and launch this command on the `cp-node` only: 
@@ -182,7 +182,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 <br>
 
 
-## Joining Worker Node to the Kubernetes Cluster
+### Joining Worker Node to the Kubernetes Cluster
 
 With the kubernetes-master node up and the pod network ready, we can join our worker nodes to the cluster. In this tutorial, we only have one worker node, so we will be working with that.
 
@@ -203,7 +203,7 @@ cp-node:~$ kubectl get nodes
 <br>
 
 
-## Deploying an Application (nginx) to the Kubernetes Cluster
+### Deploying an Application (nginx) to the Kubernetes Cluster
 
 At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
 - Execute the following command on the master node to create a Kubernetes deployment for Nginx:
