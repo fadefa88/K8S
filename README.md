@@ -194,8 +194,8 @@ cp-node:~$ kubectl get nodes
 
 ### Deploying an Application (nginx) to the Kubernetes Cluster
 
-- At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
-Execute the following command on the master node to create a Kubernetes deployment for Nginx:
+At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
+- Execute the following command on the master node to create a Kubernetes deployment for Nginx:
 
 
 ```sh
