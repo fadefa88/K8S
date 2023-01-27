@@ -2,56 +2,6 @@
 
  
 
-- [Playground](#playground)
-
-  - [Requirements and Support Matrix](#requirements-and-support-matrix)
-
-    - [Supported Cluster Variants](#supported-cluster-variants)
-
-    - [Suport Matrix](#suport-matrix)
-
-  - [Prepare your Environment](#prepare-your-environment)
-
-  - [Get the Playground](#get-the-playground)
-
-  - [Configure](#configure)
-
-  - [Start](#start)
-
-    - [Create Playgrounds built-in Cluster](#create-playgrounds-built-in-cluster)
-
-    - [Create GKE, EKS or AKS Clusters](#create-gke-eks-or-aks-clusters)
-
-  - [Deployments](#deployments)
-
-  - [Tear Down](#tear-down)
-
-    - [Tear Down Ubuntu Local, MacOS Local or Cloud9 Local Clusters](#tear-down-ubuntu-local-macos-local-or-cloud9-local-clusters)
-
-    - [Tear Down Pipelines](#tear-down-pipelines)
-
-    - [Tear Down GKE, EKS or AKS Clusters](#tear-down-gke-eks-or-aks-clusters)
-
-  - [Add-Ons](#add-ons)
-
-  - [Play with the Playground](#play-with-the-playground)
-
-  - [Demo Scripts](#demo-scripts)
-
-    - [Deployment Control Demo](#deployment-control-demo)
-
-    - [Runtime Security Demo](#runtime-security-demo)
-
-  - [Experimenting](#experimenting)
-
-    - [Migrate](#migrate)
-
-  - [Testing the Playground](#testing-the-playground)
-
-  - [TODO](#todo)
-
- 
-
 For the environment i've used a minimal K8S cluster with two Ubuntu server 20.04 and our Product Cloud infrastructure.
 
 This tutorial is similar to Markus playground, however it requires a longer deployment and on the other hand it reduces the costs of the cloud.
@@ -64,55 +14,30 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 
 > ***Note:*** Container Security supports Kubernetes 1.14 or newer.
 
-- 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM (otherwise the command `kubeadm init` will fail and you won't be able to initialize the cluster
+- 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM (otherwise the command `kubeadm init` will fail and you won't be able to initialize the cluster)
+
+You can add your VM directly in your vAPP by using the below configuration:
+![1](https://user-images.githubusercontent.com/62143875/215043404-54ca7cc7-ff22-43d6-ba5f-fb330c6b2943.PNG)
+
 
 I have called the first node `cp-node` which is the master node with IP 192.168.7.10, and the second `worker-node` which is the slave with IP 192.168.7.11.
 All the nodes must talk to each other, so either you have a DNS or you can edit the file /etc/hosts of both Ubuntu servers
 
+`cp-node:~$`
 ```sh
-
-cp-node:~$
 sudo vim /etc/hosts
+```
+and add the entries:
+![image](https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png)
+
+
+Repeat the same steps on the `worker-node` as well.
+ 
+
 
  
 
-# AKS
-
-./clusters/rapid-aks.sh
-
- 
-
-# EKS
-
-./clusters/rapid-eks.sh
-
-``` 
-
- 
-
- 
-
- 
-
- 
-
-*Local* means, the cluster will run on the machine you're working on.
-
- 
-
-*Cloud* means, that the cluster is a cloud managed cluster using the named service.
-
- 
-
-*(1)* Depending on the Kernel in use. Currently the kernels 4.15.x and 5.4.x are supported.
-
- 
-
-*(2)* Currently in beta.
-
- 
-
-## Prepare your Environment
+## Install Docker Environment
 
  
 
