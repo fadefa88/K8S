@@ -141,7 +141,7 @@ sudo systemctl restart docker
  
 - Let's start by initializing the Kubernetes cluster and launch this command on the `cp-node` only: 
 ```sh
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+cp-node:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 > ***Note:*** 10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr).
 
