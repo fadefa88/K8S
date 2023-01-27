@@ -180,7 +180,7 @@ With the kubernetes-master node up and the pod network ready, we can join our wo
 ```sh
 worker-node:~$ sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
 ```
-- You should see similar output like the screenshot below when it completes joining the cluster:
+- You should see a similar output like the screenshot below when it completes joining the cluster:
 ![image (2)](https://user-images.githubusercontent.com/62143875/215049615-f5b1e8a4-993c-484c-bc2c-7bd0a9b1878a.png)
 
 - Once the joining process completes, switch the master node terminal and execute the following command to confirm that your worker node has joined the cluster:
