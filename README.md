@@ -1,5 +1,31 @@
 # Create your Kubernetes cluster on premise and integrate it with Cloud One - Container Security
 
+# Playground
+
+- [Playground](#playground)
+  - [Requirements and Support Matrix](#requirements-and-support-matrix)
+    - [Supported Cluster Variants](#supported-cluster-variants)
+    - [Suport Matrix](#suport-matrix)
+  - [Prepare your Environment](#prepare-your-environment)
+  - [Get the Playground](#get-the-playground)
+  - [Configure](#configure)
+  - [Start](#start)
+    - [Create Playgrounds built-in Cluster](#create-playgrounds-built-in-cluster)
+    - [Create GKE, EKS or AKS Clusters](#create-gke-eks-or-aks-clusters)
+  - [Deployments](#deployments)
+  - [Tear Down](#tear-down)
+    - [Tear Down Ubuntu Local, MacOS Local or Cloud9 Local Clusters](#tear-down-ubuntu-local-macos-local-or-cloud9-local-clusters)
+    - [Tear Down Pipelines](#tear-down-pipelines)
+    - [Tear Down GKE, EKS or AKS Clusters](#tear-down-gke-eks-or-aks-clusters)
+  - [Add-Ons](#add-ons)
+  - [Play with the Playground](#play-with-the-playground)
+  - [Demo Scripts](#demo-scripts)
+    - [Deployment Control Demo](#deployment-control-demo)
+    - [Runtime Security Demo](#runtime-security-demo)
+  - [Experimenting](#experimenting)
+    - [Migrate](#migrate)
+  - [Testing the Playground](#testing-the-playground)
+  - [TODO](#todo)
  
 
 For the environment i've used a minimal K8S cluster with two Ubuntu server 20.04 and our Product Cloud infrastructure.
