@@ -299,7 +299,8 @@ cloudOne:
 helm install \
      deepsecurity-smartcheck \
      --values overrides.yaml \
-     https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
+     https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz --set auth.secretSeed={password}
 ```
+> ***Note:*** This is not on the Cloud One guide, but in the above command you must add the command `--set auth.secretSeed={password}` where `{password}` can be whathever you like
 
 
