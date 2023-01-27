@@ -235,7 +235,7 @@ By clicking on next, you will se some strings to use for the integration with Co
 cp-node:~$ sudo vim /etc/hosts
 ```
 - Paste there the first rows:
-- <br>
+ <br>
 ![image](https://user-images.githubusercontent.com/62143875/215071074-8922c4fc-08f7-4823-8d78-2523fcb3a16f.png)
 ![image](https://user-images.githubusercontent.com/62143875/215074509-847bf53c-c34a-4e9d-81e8-ed198878f183.png)
 
