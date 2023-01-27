@@ -251,7 +251,7 @@ By clicking on next, you will se some strings to use for the integration with Co
 
 - On your Kubernetes master node, create a file called overrides.yaml
 ```sh
-cp-node:~$ sudo vim /etc/hosts
+cp-node:~$ sudo vim overrides.yaml
 ```
 - Paste there the first rows:
 ```sh
@@ -277,6 +277,27 @@ helm install \
      --values overrides.yaml \
      https://github.com/trendmicro/cloudone-container-security-helm/archive/master.tar.gz
 ```
+- Let's go back to Cloud One console and create a New Scanner (which is the Smart Check component):
+![image](https://user-images.githubusercontent.com/62143875/215076939-5bc444f6-7dc8-4542-af5f-38624bfb9d6d.png)
+By clicking on next, you will see another set of strings to register Smart Check.
+![image](https://user-images.githubusercontent.com/62143875/215077496-4f490a30-395b-4f43-b2c3-26f52884a1b5.png)
 
+- Go back to your file overrides.yaml and replace its content with the new strings:
+```sh
+cp-node:~$ sudo vim overrides.yaml
+```
+- Replace the content with these new strings:
+```sh
+cloudOne:
+    apiKey: 2KuL4JeZadT50Qznc4wV84lM8kV
+    endpoint: https://container.trend-us-1.cloudone.trendmicro.com
+```
+- You can register scanner K8S_scanner by using the command below:
+```sh
+helm install \
+     deepsecurity-smartcheck \
+     --values overrides.yaml \
+     https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
+```
 
 
