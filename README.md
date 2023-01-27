@@ -42,7 +42,7 @@ All the nodes must talk to each others, so if you don't have a DNS in place, you
 cp-node:~$ sudo vim /etc/hosts
 ```
 - Then add the entries of `cp-node` and `worker-node`:
-<img src="https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png" width="50%">
+<img src="https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png" width="50%" onclick="window.open('anotherpage.html', '_blank');" />
 
 
 - Repeat the same steps on the `worker-node` as well.
