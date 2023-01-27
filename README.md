@@ -292,6 +292,8 @@ cloudOne:
     apiKey: 2KuL4JeZadT50Qznc4wV84lM8kV
     endpoint: https://container.trend-us-1.cloudone.trendmicro.com
 ```
+![image](https://user-images.githubusercontent.com/62143875/215077984-61a599d0-c8f2-43b8-87d3-aba8f85f887e.png)
+
 - You can register scanner K8S_scanner by using the command below:
 ```sh
 helm install \
