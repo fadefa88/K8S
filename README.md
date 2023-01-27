@@ -1,31 +1,15 @@
 # Create your Kubernetes cluster on premise and integrate it with Cloud One - Container Security
 
-# Playground
+- [Create your Kubernetes cluster on premise and integrate it with Cloud One - Container Security](#create-your-kubernetes-cluster-on-premise-and-integrate-it-with-cloud-one---container-security)
+  - [Requirements](#requirements)
+  - [Install Docker Environment](#install-docker-environment)
+  - [Install Kubernetes v. 1.23 (not the latest version!)](#install-kubernetes-v-123-not-the-latest-version)
+    - [Deploy a Pod Network](#deploy-a-pod-network)
+    - [Joining Worker Node to the Kubernetes Cluster](#joining-worker-node-to-the-kubernetes-cluster)
+    - [Deploying an Application (nginx) to the Kubernetes Cluster](#deploying-an-application-nginx-to-the-kubernetes-cluster)
+  - [Install Helm](#install-helm)
+  - [Let's integrate with Cloud One - Container Security](#lets-integrate-with-cloud-one---container-security)
 
-- [Playground](#playground)
-  - [Requirements and Support Matrix](#requirements-and-support-matrix)
-    - [Supported Cluster Variants](#supported-cluster-variants)
-    - [Suport Matrix](#suport-matrix)
-  - [Prepare your Environment](#prepare-your-environment)
-  - [Get the Playground](#get-the-playground)
-  - [Configure](#configure)
-  - [Start](#start)
-    - [Create Playgrounds built-in Cluster](#create-playgrounds-built-in-cluster)
-    - [Create GKE, EKS or AKS Clusters](#create-gke-eks-or-aks-clusters)
-  - [Deployments](#deployments)
-  - [Tear Down](#tear-down)
-    - [Tear Down Ubuntu Local, MacOS Local or Cloud9 Local Clusters](#tear-down-ubuntu-local-macos-local-or-cloud9-local-clusters)
-    - [Tear Down Pipelines](#tear-down-pipelines)
-    - [Tear Down GKE, EKS or AKS Clusters](#tear-down-gke-eks-or-aks-clusters)
-  - [Add-Ons](#add-ons)
-  - [Play with the Playground](#play-with-the-playground)
-  - [Demo Scripts](#demo-scripts)
-    - [Deployment Control Demo](#deployment-control-demo)
-    - [Runtime Security Demo](#runtime-security-demo)
-  - [Experimenting](#experimenting)
-    - [Migrate](#migrate)
-  - [Testing the Playground](#testing-the-playground)
-  - [TODO](#todo)
  
 
 For the environment i've used a minimal K8S cluster with two Ubuntu server 20.04 and our Product Cloud infrastructure.
