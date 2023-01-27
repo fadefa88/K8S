@@ -42,7 +42,6 @@ All the nodes must talk to each others, so if you don't have a DNS in place, you
 cp-node:~$ sudo vim /etc/hosts
 ```
 - Then add the entries of `cp-node` and `worker-node`:
-![image](https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png)
 <img src="https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png" width="50%">
 
 
@@ -158,7 +157,7 @@ cp-node:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 > ***Note:*** 10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr).
 
 - Wait for Kubernetes control-plane initialization and take note of the last kubeadm join commmand. You will need it later for joining the worker node to this one. In my environment this is the command output:
-![image (1)](https://user-images.githubusercontent.com/62143875/215048053-ff380893-397b-492b-97c3-fd351de2badb.png)
+<img src="https://user-images.githubusercontent.com/62143875/215048053-ff380893-397b-492b-97c3-fd351de2badb.png" width="50%">
 - so I'm pasting that command somewhere:
 ```sh
 sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
@@ -193,14 +192,14 @@ With the kubernetes-master node up and the pod network ready, we can join our wo
 worker-node:~$ sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
 ```
 - You should see a similar output like the screenshot below when it completes joining the cluster:
-![image (2)](https://user-images.githubusercontent.com/62143875/215049615-f5b1e8a4-993c-484c-bc2c-7bd0a9b1878a.png)
+<img src="https://user-images.githubusercontent.com/62143875/215049615-f5b1e8a4-993c-484c-bc2c-7bd0a9b1878a.png" width="50%">
 
 - Once the joining process completes, switch the master node terminal and execute the following command to confirm that your worker node has joined the cluster:
 ```sh
 cp-node:~$ kubectl get nodes
 ```
 - In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
-![unnamed](https://user-images.githubusercontent.com/62143875/215050385-da613b4d-6f4a-432d-96f0-5dd1df031875.png)
+<img src="https://user-images.githubusercontent.com/62143875/215050385-da613b4d-6f4a-432d-96f0-5dd1df031875.png" width="50%">
 <br>
 
 
@@ -222,9 +221,9 @@ The command above will create a public-facing service for the Nginx deployment. 
 ```sh
 kubectl get svc
 ```
-![image](https://user-images.githubusercontent.com/62143875/215068400-bf125b4c-b1e3-4436-86c0-c3866cd4ea62.png)
+<img src="https://user-images.githubusercontent.com/62143875/215068400-bf125b4c-b1e3-4436-86c0-c3866cd4ea62.png" width="50%">
 - You can see that our assigned port is 32634. Now you can visit the worker node IP address and port combination in your browser and view the default Nginx index page:
-![image](https://user-images.githubusercontent.com/62143875/215068592-a55df539-46a1-42ea-997c-9635669e6221.png)
+<img src="https://user-images.githubusercontent.com/62143875/215068592-a55df539-46a1-42ea-997c-9635669e6221.png" width="80%">
 
 
 - You can delete a deployment by specifying the name of the deployment. For example, this command will delete our deployment:
@@ -279,7 +278,8 @@ cloudOne:
 ```
 
 
-![image](https://user-images.githubusercontent.com/62143875/215074509-847bf53c-c34a-4e9d-81e8-ed198878f183.png)
+<img src="https://user-images.githubusercontent.com/62143875/215074509-847bf53c-c34a-4e9d-81e8-ed198878f183.png" width="50%">
+
 
 - Then you can enroll the cluster `K8S_Cluster` by using the command below:
 ```sh
@@ -304,7 +304,9 @@ cloudOne:
     apiKey: 2KuL4JeZadT50Qznc4wV84lM8kV
     endpoint: https://container.trend-us-1.cloudone.trendmicro.com
 ```
-![image](https://user-images.githubusercontent.com/62143875/215077984-61a599d0-c8f2-43b8-87d3-aba8f85f887e.png)
+
+<img src="https://user-images.githubusercontent.com/62143875/215077984-61a599d0-c8f2-43b8-87d3-aba8f85f887e.png" width="50%">
+
 
 - You can register scanner K8S_scanner by using the command below:
 ```sh
