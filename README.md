@@ -25,7 +25,7 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 
 
 - I have called the first node `cp-node` which is the master node with IP 192.168.7.10, and the second `worker-node` which is the slave with IP 192.168.7.11.
-All the nodes must talk to each others, so either you have a DNS or you edit the file /etc/hosts of both Ubuntu servers:
+All the nodes must talk to each others, so if you don't have a DNS in place, you have to edit the file /etc/hosts of both Ubuntu servers:
 
 ```sh
 cp-node:~$ sudo vim /etc/hosts
