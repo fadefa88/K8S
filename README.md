@@ -177,6 +177,7 @@ Once the joining process completes, switch the master node terminal and execute 
 kubectl get nodes
 ```
 In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
+![unnamed](https://user-images.githubusercontent.com/62143875/215050385-da613b4d-6f4a-432d-96f0-5dd1df031875.png)
 
 
 ### Create Playgrounds built-in Cluster
