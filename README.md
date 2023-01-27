@@ -130,31 +130,17 @@ sudo systemctl restart docker
 ```
  
 
-installed.
-
  
 
-Run it with
+## Deploy a Pod Network
 
  
-
+Let's start by initializing the Kubernetes cluster:
 ```sh
-
-./tools.sh
-
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
+10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr)
 
- 
-
-The script will attempt to upgrade already installed tools to the latest available version.
-
- 
-
-## Configure
-
- 
-
-Please follow the documentation [here](docs/getting-started-configuration.md).
 
  
 
