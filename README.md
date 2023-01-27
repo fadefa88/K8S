@@ -6,7 +6,7 @@ For the environment i've used a minimal K8S cluster with two Ubuntu server 20.04
 
 This tutorial is similar to Markus playground, however it requires a longer deployment and on the other hand it reduces the costs of the cloud.
 
- 
+ <br><br>
 
  
 
@@ -15,23 +15,25 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 > ***Note:*** Container Security supports Kubernetes 1.14 or newer.
 
 - 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM (otherwise the command `kubeadm init` will fail and you won't be able to initialize the cluster)
+<br>
 
-You can add your VM directly in your vAPP by using the below configuration:
-![1](https://user-images.githubusercontent.com/62143875/215043404-54ca7cc7-ff22-43d6-ba5f-fb330c6b2943.PNG)
+- You can add your VM directly in your vAPP by using the below configuration:
+![image](https://user-images.githubusercontent.com/62143875/215054353-1397aa14-ff2e-48ab-839c-fe7918237235.png)
+<br>
+<br>
 
 
-I have called the first node `cp-node` which is the master node with IP 192.168.7.10, and the second `worker-node` which is the slave with IP 192.168.7.11.
-All the nodes must talk to each other, so either you have a DNS or you can edit the file /etc/hosts of both Ubuntu servers
+- I have called the first node `cp-node` which is the master node with IP 192.168.7.10, and the second `worker-node` which is the slave with IP 192.168.7.11.
+All the nodes must talk to each other, so either you have a DNS or you can edit the file /etc/hosts of both Ubuntu servers:
 
-`cp-node:~$`
 ```sh
-sudo vim /etc/hosts
+cp-node:~$ sudo vim /etc/hosts
 ```
-and add the entries:
+- Then add the entries of `cp-node` and `worker-node`:
 ![image](https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png)
 
 
-Repeat the same steps on the `worker-node` as well.
+- Repeat the same steps on the `worker-node` as well.
  
 
 
