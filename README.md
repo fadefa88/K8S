@@ -143,20 +143,41 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 Wait for Kubernetes control-plane initialization and take note of the last kubeadm join commmand. You will need it later for joining the worker node to this one. In my environment this is the command output:
 ![image (1)](https://user-images.githubusercontent.com/62143875/215048053-ff380893-397b-492b-97c3-fd351de2badb.png)
-so I'm pasting somewhere:
+so I'm pasting it somewhere:
 ```sh
-kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
+sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
 ```
 
- 
+Still on the master node, you need few commands to initialize the cluster properly:
+```sh
+mkdir -p $HOME/.kube
+```
+```sh
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+``` 
+```sh
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
 
-## Start
 
- 
+## Joining Worker Node to the Kubernetes Cluster
 
-If you want to deploy the built-in cluster go through the next chapter. If you want to use a cloud managed cluster jump to [Create GKE, EKS or AKS Clusters](#create-gke-eks-or-aks-clusters).
+With the kubernetes-master node up and the pod network ready, we can join our worker nodes to the cluster. In this tutorial, we only have one worker node, so we will be working with that.
+First, log into your worker node. You will use your kubeadm join command that was shown in your terminal when we initialized the master node:
+`worker-node:~$`
+```sh
+sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
+```
+You should see similar output like the screenshot below when it completes joining the cluster:
+![image (2)](https://user-images.githubusercontent.com/62143875/215049615-f5b1e8a4-993c-484c-bc2c-7bd0a9b1878a.png)
 
- 
+Once the joining process completes, switch the master node terminal and execute the following command to confirm that your worker node has joined the cluster:
+`cp-node:~$`
+```sh
+kubectl get nodes
+```
+In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
+
 
 ### Create Playgrounds built-in Cluster
 
