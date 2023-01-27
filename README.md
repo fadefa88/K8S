@@ -135,12 +135,18 @@ sudo systemctl restart docker
 ## Deploy a Pod Network
 
  
-Let's start by initializing the Kubernetes cluster:
+Let's start by initializing the Kubernetes cluster and launch this command on the `cp-node` only: 
 ```sh
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
-10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr)
+10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr).
 
+Wait for Kubernetes control-plane initialization and take note of the last kubeadm join commmand. You will need it later for joining the worker node to this one. In my environment this is the command output:
+![image (1)](https://user-images.githubusercontent.com/62143875/215048053-ff380893-397b-492b-97c3-fd351de2badb.png)
+so I'm pasting somewhere:
+```sh
+kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
+```
 
  
 
