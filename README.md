@@ -30,7 +30,7 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 <br>
 
 - You can add your VM directly in your Product Cloud vAPP by using the below configuration:
-![image](https://user-images.githubusercontent.com/62143875/215054353-1397aa14-ff2e-48ab-839c-fe7918237235.png | width=100)
+![image](https://user-images.githubusercontent.com/62143875/215054353-1397aa14-ff2e-48ab-839c-fe7918237235.png)
 <br>
 <br>
 
