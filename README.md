@@ -45,9 +45,9 @@ cp-node:~$ sudo vim /etc/hosts
 
 Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes.
 
-`cp-node:~$`
+
 ```sh
-sudo apt update
+cp-node:~$ sudo apt update
 ```
 ```sh
 sudo apt upgrade
