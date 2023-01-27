@@ -79,7 +79,7 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
  
 
-## Install Kubernetes v. 1.23 (not the latest one!)
+## Install Kubernetes v. 1.23 (not the latest version!)
 
 - On both Ubuntu servers type the below commands to install Kubernetes (with the latest versions of Kubernetes, Smart Check is not working anymore. While we wait for the new Cloud replacement, we can still test Smart Check on a previous K8S release).
 
