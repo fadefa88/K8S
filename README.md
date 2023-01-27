@@ -222,6 +222,25 @@ kubectl delete deployment nginx
 
 Congratulations! Your Kubernetes cluster is now up and running
 <br>
+<br>
+## Install Helm
+For the integration with Cloud One, Helm v3 is required. 
+- To install it, simply launch these commands on the master node:
+```sh
+cp-node:~$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+```
+Give the script execute permissions.
+```sh
+chmod 700 get_helm.sh
+```
+Run the installer.
+```sh
+sudo ./get_helm.sh
+```
+<br>
+<br>
+
+
 
 ## Let's integrate with Cloud One - Container Security
 As we created the Kubernetes cluster, is now time to integrate it with Cloud One - Container Security. 
