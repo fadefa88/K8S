@@ -86,7 +86,7 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 - First, we need to install http, https and curl packets
 
 ```sh
-cp-node:~$ sudo apt-get install -y apt-transport-https curl
+cp-node:~$ sudo apt-get install apt-transport-https curl
 ```
 - Let's add the public Kubernetes key:
 ```sh
@@ -103,7 +103,7 @@ EOF
 sudo apt-get update
 ```
 ```sh
-sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
+sudo apt-get install kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
 ```
 ```sh
 sudo apt-mark hold kubelet kubeadm kubectl
