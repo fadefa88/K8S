@@ -43,7 +43,7 @@ cp-node:~$ sudo vim /etc/hosts
 
  
 
-Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes.
+- Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes.
 
 
 ```sh
@@ -56,14 +56,14 @@ sudo apt upgrade
 sudo apt install docker.io
 ```
 
-Now let's enable docker and check if the service is running.
+- Now let's enable docker and check if the service is running.
 ```sh
 sudo systemctl enable docker
 ```
 ```sh
 sudo systemctl status docker   
 ```
-We also need to disable swap memory otherwise Kubernetes wouldn't start
+- We also need to disable swap memory otherwise Kubernetes wouldn't start
 ```sh
 sudo swapoff -a
 ```
@@ -78,24 +78,24 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ## Install Kubernetes v. 1.23 (not the latest one!)
 
-On both Ubuntu servers type the below commands to install Kubernetes (with the latest versions of Kubernetes, Smart Check is not working anymore. While we wait for the new Cloud replacement, we can still test Smart Check on a previous K8S release).
+- On both Ubuntu servers type the below commands to install Kubernetes (with the latest versions of Kubernetes, Smart Check is not working anymore. While we wait for the new Cloud replacement, we can still test Smart Check on a previous K8S release).
 
-First, we need to install http, https and curl packets
+- First, we need to install http, https and curl packets
 
 ```sh
-sudo apt-get install -y apt-transport-https curl
+cp-node:~$ sudo apt-get install -y apt-transport-https curl
 ```
-Let's add the public Kubernetes key:
+- Let's add the public Kubernetes key:
 ```sh
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 ```
-Add the latest Kubernetes repo:
+- Add the latest Kubernetes repo:
 ```sh
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 ```
-Now we can install Kubernetes:
+- Now we can install Kubernetes v. 1.23:
 ```sh
 sudo apt-get update
 ```
@@ -106,7 +106,7 @@ sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-On both master and worker nodes, update the cgroupdriver with the following commands: 
+- On both master and worker nodes, update the cgroupdriver with the following commands: 
 ```sh
 sudo mkdir /etc/docker
 ```
@@ -120,7 +120,7 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
 }
 EOF
 ```
-Then, execute the following commands to restart and enable Docker on system boot-up:  
+- Then, execute the following commands to restart and enable Docker on system boot-up:  
 ```sh
 sudo systemctl enable docker
 ```
@@ -137,20 +137,20 @@ sudo systemctl restart docker
 ## Deploy a Pod Network
 
  
-Let's start by initializing the Kubernetes cluster and launch this command on the `cp-node` only: 
+- Let's start by initializing the Kubernetes cluster and launch this command on the `cp-node` only: 
 ```sh
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
-10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr).
+> ***Note:*** 10.244.0.0/16 it's a virtual network and it shouldn't be on the same network of `cp-node` and `worker-node` (for this tutorial my servers are in a 192.168.0.0/20 cidr).
 
-Wait for Kubernetes control-plane initialization and take note of the last kubeadm join commmand. You will need it later for joining the worker node to this one. In my environment this is the command output:
+- Wait for Kubernetes control-plane initialization and take note of the last kubeadm join commmand. You will need it later for joining the worker node to this one. In my environment this is the command output:
 ![image (1)](https://user-images.githubusercontent.com/62143875/215048053-ff380893-397b-492b-97c3-fd351de2badb.png)
-so I'm pasting it somewhere:
+- so I'm pasting it somewhere:
 ```sh
 sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
 ```
 
-Still on the master node, you need few commands to initialize the cluster properly:
+- Still on the master node, you need few commands to initialize the cluster properly:
 ```sh
 mkdir -p $HOME/.kube
 ```
@@ -165,47 +165,47 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ## Joining Worker Node to the Kubernetes Cluster
 
 With the kubernetes-master node up and the pod network ready, we can join our worker nodes to the cluster. In this tutorial, we only have one worker node, so we will be working with that.
-First, log into your worker node. You will use your kubeadm join command that was shown in your terminal when we initialized the master node:
-`worker-node:~$`
+
+- First, log into your worker node. You will use your kubeadm join command that was shown in your terminal when we initialized the master node:
+
 ```sh
-sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
+worker-node:~$ sudo kubeadm join 192.168.7.10:6443 --token 0svxov.3a7nxiqruo1iz4bj --discovery-token-ca-cert-hash sha256:797d55a78a64ab77c491dea8584b26ad6b93b8fffbda39d1294e1ad25a9ec92e
 ```
-You should see similar output like the screenshot below when it completes joining the cluster:
+- You should see similar output like the screenshot below when it completes joining the cluster:
 ![image (2)](https://user-images.githubusercontent.com/62143875/215049615-f5b1e8a4-993c-484c-bc2c-7bd0a9b1878a.png)
 
-Once the joining process completes, switch the master node terminal and execute the following command to confirm that your worker node has joined the cluster:
-`cp-node:~$`
+- Once the joining process completes, switch the master node terminal and execute the following command to confirm that your worker node has joined the cluster:
 ```sh
-kubectl get nodes
+cp-node:~$ kubectl get nodes
 ```
-In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
+- In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
 ![unnamed](https://user-images.githubusercontent.com/62143875/215050385-da613b4d-6f4a-432d-96f0-5dd1df031875.png)
 
 
 ### Deploying an Application (nginx) to the Kubernetes Cluster
 
-At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
+- At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
 Execute the following command on the master node to create a Kubernetes deployment for Nginx:
 
-`cp-node:~$`
+
 ```sh
-kubectl create deployment nginx --image=nginx
+cp-node:~$ kubectl create deployment nginx --image=nginx
 ```
-To make the nginx service accessible via the internet, run the following command:
+- To make the nginx service accessible via the internet, run the following command:
 ```sh
 kubectl create service nodeport nginx --tcp=80:80
 ```
 The command above will create a public-facing service for the Nginx deployment. This being a nodeport deployment, Kubernetes assigns the service a port in the range of 32000+.
-You can get the current services by issuing the command:
+- You can get the current services by issuing the command:
 ```sh
 kubectl get svc
 ```
 ![image](https://user-images.githubusercontent.com/62143875/215050959-dece1d39-d528-45fb-98bd-8c6331c89ec1.png)
-You can see that our assigned port is 32264. Now you can visit the worker node IP address and port combination in your browser and view the default Nginx index page:
+- You can see that our assigned port is 32264. Now you can visit the worker node IP address and port combination in your browser and view the default Nginx index page:
 
 ![image](https://user-images.githubusercontent.com/62143875/215051527-0f765051-3464-4913-9c33-cf4db919b2e6.png)
 
-You can delete a deployment by specifying the name of the deployment. For example, this command will delete our deployment:
+- You can delete a deployment by specifying the name of the deployment. For example, this command will delete our deployment:
 ```sh
 kubectl delete deployment nginx
 ```
