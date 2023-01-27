@@ -110,9 +110,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
 - On both master and worker nodes, update the cgroupdriver with the following commands: 
-```sh
-sudo mkdir /etc/docker
-```
+
 ```sh
 cat <<EOF | sudo tee /etc/docker/daemon.json
 { "exec-opts": ["native.cgroupdriver=systemd"],
