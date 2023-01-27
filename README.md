@@ -227,8 +227,14 @@ Congratulations! Your Kubernetes cluster is now up and running
 As we created the Kubernetes cluster, is now time to integrate it with Cloud One - Container Security. 
 - Let's start by adding a new cluster:
 ![image](https://user-images.githubusercontent.com/62143875/215070900-06310618-1b2d-408d-beec-353e49e0c01c.png)
+By clicking on next, you will se some strings to use for the integration with Container Security.
 - On your Kubernetes master node, create a file called overrides.yaml
+```sh
+cp-node:~$ sudo vim /etc/hosts
+```
+- Paste there the first rows:
 ![image](https://user-images.githubusercontent.com/62143875/215071074-8922c4fc-08f7-4823-8d78-2523fcb3a16f.png)
+
 
 cloudOne:
     apiKey: 2KuGwnfHc3PyY4wBim2afmJO62f
