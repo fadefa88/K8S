@@ -210,10 +210,10 @@ The command above will create a public-facing service for the Nginx deployment. 
 ```sh
 kubectl get svc
 ```
-![image](https://user-images.githubusercontent.com/62143875/215050959-dece1d39-d528-45fb-98bd-8c6331c89ec1.png)
-- You can see that our assigned port is 32264. Now you can visit the worker node IP address and port combination in your browser and view the default Nginx index page:
+![image](https://user-images.githubusercontent.com/62143875/215068400-bf125b4c-b1e3-4436-86c0-c3866cd4ea62.png)
+- You can see that our assigned port is 32634. Now you can visit the worker node IP address and port combination in your browser and view the default Nginx index page:
+![image](https://user-images.githubusercontent.com/62143875/215068592-a55df539-46a1-42ea-997c-9635669e6221.png)
 
-![image](https://user-images.githubusercontent.com/62143875/215051527-0f765051-3464-4913-9c33-cf4db919b2e6.png)
 
 - You can delete a deployment by specifying the name of the deployment. For example, this command will delete our deployment:
 ```sh
