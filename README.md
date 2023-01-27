@@ -192,7 +192,7 @@ cp-node:~$ kubectl get nodes
 <br>
 
 
-### Deploying an Application (nginx) to the Kubernetes Cluster
+## Deploying an Application (nginx) to the Kubernetes Cluster
 
 At this point, we have set up a running Kubernetes cluster. Let’s try to deploy a service to it. We will test the cluster by deploying the Nginx webserver
 - Execute the following command on the master node to create a Kubernetes deployment for Nginx:
@@ -221,3 +221,24 @@ kubectl delete deployment nginx
 ```
 
 Congratulations! Your Kubernetes cluster is now up and running
+<br>
+
+## Let's integrate with Cloud One - Container Security
+As we created the Kubernetes cluster, is now time to integrate it with Cloud One - Container Security. 
+- Let's start by adding a new cluster:
+![image](https://user-images.githubusercontent.com/62143875/215070900-06310618-1b2d-408d-beec-353e49e0c01c.png)
+- On your Kubernetes master node, create a file called overrides.yaml
+![image](https://user-images.githubusercontent.com/62143875/215071074-8922c4fc-08f7-4823-8d78-2523fcb3a16f.png)
+
+cloudOne:
+    apiKey: 2KuGwnfHc3PyY4wBim2afmJO62f
+    endpoint: https://container.trend-us-1.cloudone.trendmicro.com
+    runtimeSecurity:
+        enabled: true
+    vulnerabilityScanning:
+        enabled: true
+    exclusion:
+        namespaces: [ kube-system ]
+
+
+
