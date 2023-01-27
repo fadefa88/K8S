@@ -35,6 +35,7 @@ cp-node:~$ sudo vim /etc/hosts
 
 
 - Repeat the same steps on the `worker-node` as well.
+<br>
  
 
 
@@ -71,6 +72,7 @@ sudo swapoff -a
 ```sh
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
+<br>
  
 
 
@@ -131,6 +133,7 @@ sudo systemctl daemon-reload
 ```sh
 sudo systemctl restart docker
 ```
+<br>
  
 
  
@@ -161,6 +164,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 ```sh
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+<br>
 
 
 ## Joining Worker Node to the Kubernetes Cluster
@@ -181,6 +185,7 @@ cp-node:~$ kubectl get nodes
 ```
 - In the screenshot from the output of the command above, we can see that the worker node has joined the cluster:
 ![unnamed](https://user-images.githubusercontent.com/62143875/215050385-da613b4d-6f4a-432d-96f0-5dd1df031875.png)
+<br>
 
 
 ### Deploying an Application (nginx) to the Kubernetes Cluster
