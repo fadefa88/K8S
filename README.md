@@ -253,9 +253,20 @@ By clicking on next, you will se some strings to use for the integration with Co
 ```sh
 cp-node:~$ sudo vim /etc/hosts
 ```
-Paste there the first rows:
+- Paste there the first rows:
 <br>
-![image](https://user-images.githubusercontent.com/62143875/215071074-8922c4fc-08f7-4823-8d78-2523fcb3a16f.png)
+```sh
+cloudOne:
+    apiKey: 2KuGwnfHc3PyY4wBim2afmJO62f
+    endpoint: https://container.trend-us-1.cloudone.trendmicro.com
+    runtimeSecurity:
+        enabled: true
+    vulnerabilityScanning:
+        enabled: true
+    exclusion:
+        namespaces: [ kube-system ]
+```
+
 ![image](https://user-images.githubusercontent.com/62143875/215074509-847bf53c-c34a-4e9d-81e8-ed198878f183.png)
 
 - Then you can enroll the cluster `K8S_Cluster` by using the command below:
