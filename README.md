@@ -70,68 +70,64 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
  
 
-If you plan to use the built in cluster of the Playground, please follow
+
 
  
 
-- [Getting Started with built in cluster](docs/getting-started-kind.md)
+## Install Kubernetes v. 1.23 (not the latest one!)
 
- 
+On both Ubuntu servers type the below commands to install Kubernetes (with the latest versions of Kubernetes, Smart Check is not working anymore. While we wait for the new Cloud replacement, we can still test Smart Check on a previous K8S release).
 
-To prepare for the use with a managed cluster, please follow
-
- 
-
-- [Getting Started with managed clusters](docs/getting-started-managed.md)
-
- 
-
-## Get the Playground
-
- 
-
-Clone the repo and install required packages if not available.
-
- 
+First, we need to install http, https and curl packets
 
 ```sh
-
-git clone https://github.com/mawinkler/c1-playground.git
-
-cd c1-playground
-
+sudo apt-get install -y apt-transport-https curl
+```
+Let's add the public Kubernetes key:
+```sh
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+```
+Add the latest Kubernetes repo:
+```sh
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+```
+Now we can install Kubernetes:
+```sh
+sudo apt-get update
+```
+```sh
+sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
+```
+```sh
+sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
- 
-
-In all of these possible environments you're going to run a script called `tools.sh` either on the host running the playground cluster or the host running the CLI tools of the public clouds. This will ensure you have the latest versions of
-
- 
-
-- `brew` (MacOS only),
-
-- `docker` or `Docker for Mac`.
-
-- `kubectl`,
-
-- `eksctl`,
-
-- `kustomize`,
-
-- `helm`,
-
-- `kind`,
-
-- `kubebox`,
-
-- `stern`,
-
-- `krew`,
-
-- `syft`,
-
-- `grype`
-
+On both master and worker nodes, update the cgroupdriver with the following commands: 
+```sh
+sudo mkdir /etc/docker
+```
+```sh
+cat <<EOF | sudo tee /etc/docker/daemon.json
+{ "exec-opts": ["native.cgroupdriver=systemd"],
+"log-driver": "json-file",
+"log-opts":
+{ "max-size": "100m" },
+"storage-driver": "overlay2"
+}
+EOF
+```
+Then, execute the following commands to restart and enable Docker on system boot-up:  
+```sh
+sudo systemctl enable docker
+```
+```sh
+sudo systemctl daemon-reload
+```
+```sh
+sudo systemctl restart docker
+```
  
 
 installed.
