@@ -60,77 +60,33 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 
  
 
-## Requirements and Support Matrix
-
- 
-
-- 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM (otherwise the command `kubeadm init` will fail and you won't be able to start the cluster
-
- 
+## Requirements
 
 > ***Note:*** Container Security supports Kubernetes 1.14 or newer.
 
- 
+- 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM (otherwise the command `kubeadm init` will fail and you won't be able to initialize the cluster
+
+I have called the first node `cp-node` which is the master node with IP 192.168.7.10, and the second `worker-node` which is the slave with IP 192.168.7.11.
+All the nodes must talk to each other, so either you have a DNS or you can edit the file /etc/hosts of both Ubuntu servers
+
+```sh
+
+cp-node:~$
+sudo vim /etc/hosts
 
  
 
-### Supported Linux kernels major/minor versions
+# AKS
+
+./clusters/rapid-aks.sh
 
  
 
-Platform | Major minor version | Flavor
+# EKS
 
------- | ------ | ------
+./clusters/rapid-eks.sh
 
-Amazon Linux 2 | X | X
-
-Amazon Linux 2 | X | X
-
-Amazon Linux 2 | X | X
-
-Internal Registry | X | X
-
-Internal Registry | X | X
-
-C1CS Admission & Continuous | X | X
-
-Internal Registry | X | X
-
-Internal Registry | X | X
-
-C1CS Admission & Continuous | X | X
-
-Internal Registry | X | X
-
-Internal Registry | X | X
-
-C1CS Admission & Continuous | X | X
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-- I have called the first node `cp-node` which is the master node, and the second `worker-node` which is the slave
-
- 
+``` 
 
  
 
