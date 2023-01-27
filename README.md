@@ -31,7 +31,6 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 
 - You can add your VM directly in your Product Cloud vAPP by using the below configuration:
 ![image](https://user-images.githubusercontent.com/62143875/215054353-1397aa14-ff2e-48ab-839c-fe7918237235.png)
-<img src="https://user-images.githubusercontent.com/62143875/215054353-1397aa14-ff2e-48ab-839c-fe7918237235.png" width="50%">
 <br>
 <br>
 
@@ -44,6 +43,7 @@ cp-node:~$ sudo vim /etc/hosts
 ```
 - Then add the entries of `cp-node` and `worker-node`:
 ![image](https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png)
+<img src="https://user-images.githubusercontent.com/62143875/215043462-98134e2c-6bcd-4d38-8c56-687e07385cf6.png" width="50%">
 
 
 - Repeat the same steps on the `worker-node` as well.
