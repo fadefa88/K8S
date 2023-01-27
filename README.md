@@ -41,8 +41,33 @@ Repeat the same steps on the `worker-node` as well.
 
  
 
-In the following chapters I'm describing on how to prepare for the Playground in various environments. Choose one and proceed afterwards with section [Get the Playground](#get-the-playground).
+Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes.
 
+`cp-node:~$`
+```sh
+sudo apt update
+```
+```sh
+sudo apt upgrade
+```
+```sh
+sudo apt install docker.io
+```
+
+Now let's enable docker and check if the service is running.
+```sh
+sudo systemctl enable docker
+```
+```sh
+sudo systemctl status docker   
+```
+We also need to disable swap memory otherwise Kubernetes wouldn't start
+```sh
+sudo swapoff -a
+```
+```sh
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+```
  
 
 If you plan to use the built in cluster of the Playground, please follow
