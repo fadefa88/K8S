@@ -254,7 +254,6 @@ By clicking on next, you will se some strings to use for the integration with Co
 cp-node:~$ sudo vim /etc/hosts
 ```
 - Paste there the first rows:
-<br>
 ```sh
 cloudOne:
     apiKey: 2KuGwnfHc3PyY4wBim2afmJO62f
@@ -266,6 +265,7 @@ cloudOne:
     exclusion:
         namespaces: [ kube-system ]
 ```
+
 
 ![image](https://user-images.githubusercontent.com/62143875/215074509-847bf53c-c34a-4e9d-81e8-ed198878f183.png)
 
