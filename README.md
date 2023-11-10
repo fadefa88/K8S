@@ -56,8 +56,13 @@ cp-node:~$ sudo vim /etc/hosts
 
  
 
-- Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes.
+- Tu run Kubernetes properly, you need a container runtime environment and in this tutorial I'm using a simple Docker environment. So let's install Docker on both Ubuntu nodes. Before we need to remove the floppy: the device doesn't have a floppy drive, but the floppy driver module is installed, so you have /dev/fd0, and many things will try to use it. You can remove it by launching these commands on both ubuntu machines:
 
+```sh
+sudo rmmod floppy
+echo "blacklist floppy" | sudo tee /etc/modprobe.d/blacklist-floppy.conf
+sudo dpkg-reconfigure initramfs-tools
+```
 
 ```sh
 cp-node:~$ sudo apt update
