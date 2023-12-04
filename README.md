@@ -13,7 +13,7 @@
 
  
 
-For the environment i've used a minimal K8S cluster with two Ubuntu server 20.04 and our Product Cloud infrastructure.
+For the environment i've used a minimal K8S cluster with two Ubuntu server 22.04 and our Product Cloud infrastructure.
 
 This tutorial is similar to Markus playground, however it requires a longer deployment and on the other hand it reduces the costs of the cloud.
 
@@ -26,7 +26,7 @@ This tutorial is similar to Markus playground, however it requires a longer depl
 > ***Note:*** Container Security supports Kubernetes 1.14 or newer.
 <br>
 
-- 2 Ubuntu 20.04 server, with 2 CPU and 2GB of RAM minimum.
+- 2 Ubuntu 22.04 server, with 2 CPU and 2GB of RAM minimum.
 <br>
 
 - You can add your VM directly in your Product Cloud vAPP by using the below configuration:
@@ -106,7 +106,8 @@ cp-node:~$ sudo apt-get install apt-transport-https curl
 ```
 - Let's add the public Kubernetes key:
 ```sh
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
 ```
 - Add the latest Kubernetes repo:
 ```sh
